@@ -10,21 +10,16 @@
 <div>
     <form id="adicionarEstudiante">
         <div>
+
             <label for="dni">Documento de identidad:</label>
             <input type="text" id="dni" placeHolder="">
             <br>
 
-            <label for="nombre">Nombres:</label>
+            <label for="nombre">Nombre completo del estudiante:</label>
             <input type="text" id="nombre" placeHolder="">
             <br>
 
-            <label for="apellidos">Apellidos:</label>
-            <input type="text" id="apellidos" placeHolder="">
-            <br>
-
-            <label for="correo">Email:</label>
-            <input type="text" id="correo" placeHolder="" value="">
-            <br>
+            
             <br>
             <br>
             <input type="submit" onclick="guardar()" value="Aceptar">
@@ -32,9 +27,14 @@
     </form>
 
 </div>
-<h1>Listar estudiantes</h1>
+<h1>Adicionar curso</h1>
 <div>
-    <form id="listarEstudiantes">
+    <div>
+        <label for="adicionarCurso">Codigo del curso</label>
+        <input type=" text" id="adicionarCurso"
+    </div>
+    <form id="adicionarCurso">
+
         <p id="rta">Resultado:</p>
         <input type="submit" onclick="listar()" value="Aceptar">
     </form>
