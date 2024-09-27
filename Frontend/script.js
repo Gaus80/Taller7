@@ -69,8 +69,6 @@ function actualizar(){
     let raw = JSON.stringify({
       "dni": document.getElementById("dniA").value,
       "nombre": document.getElementById("nombreA").value,
-      "apellidos": document.getElementById("apellidosA").value,
-      "email": document.getElementById("correoA").value
     });
 
     let requestOptions = {
@@ -96,8 +94,6 @@ function cargarLE(resultado){
     elemento = "ID: " + transformado.id;
     elemento = elemento + "<br>Documento de identidad: " + transformado.dni;
     elemento = elemento + "<br>Nombres: " + transformado.nombre;
-    elemento = elemento + "<br>Apellidos: " + transformado.apellidos;
-    elemento = elemento + "<br>Correo electrónico: " + transformado.email;
     salida = salida  + elemento + "<br><br>";
     document.getElementById("rtaLE").innerHTML = salida;
 }

@@ -43,7 +43,6 @@ class EstudiantesController{
             const myJSON = JSON.stringify(req.body);
             console.log ("la información que llega es " + myJSON );
 
-
             const {dni,nombre} = req.body;
             //console.log ("el dni que llega es de " + dni);
 
