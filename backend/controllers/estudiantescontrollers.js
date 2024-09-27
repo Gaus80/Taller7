@@ -1,12 +1,14 @@
-const db= require("../database/conexion.js");
+const db= require("../bd/conexion.js");
 
-class CursosController{
+
+class EstudiantesController{
     construct(){
+
     }
 
     consultar(req,res){
         try{
-            db.query('SELECT  * FROM cursos',
+            db.query('SELECT  * FROM estudiantes',
             [],(err,rows) => {
                 if(err) {
                     res.status (400).send(err.message);
@@ -21,9 +23,9 @@ class CursosController{
     actualizar(req,res){
         const {id} = req.params;
         try{
-            const {nombre,descripcion,profesor_id} = req.body;
-            db.query('UPDATE cursos SET nombre=?, descripcion=?, profesor_id=? WHERE id=?;',
-            [nombre,descripcion, profesor_id, id],(err,rows) => {
+            const {dni,nombre} = req.body;
+            db.query('UPDATE sistema_asistencia.estudiantes SET numerodedocumentodelestudiante=?, nombrescompletosdelestudiante=?, WHERE id=?;',
+            [numerodedocumentodelestudiante,nombrescompletosdelestudiante],(err,rows) => {
                 if(err) {
                     res.status (400).send(err.message);
                 }
@@ -31,50 +33,39 @@ class CursosController{
                     res.status(200).json({respuesta:"Registro actualizado correctamente"});
             });
         }catch (err){
+            //console.log(err);
             res.status(500).send(err.message);
         }
     }
 
     ingresar(req,res){
         try{
-            const {nombre,descripcion,profesor_id} = req.body;
-            db.query('INSERT INTO cursos (id, nombre, descripcion,profesor_id) VALUES (NULL, ?, ?, ?);',
-            [nombre,descripcion,profesor_id],(err,rows) => {
+            const myJSON = JSON.stringify(req.body);
+            console.log ("la información que llega es " + myJSON );
+
+            const {dni,nombre} = req.body;
+            //console.log ("el dni que llega es de " + dni);
+
+            db.query('INSERT INTO estudiantes (numerodedocumentodelestudiante ,nombrescompletosdelestudiante) VALUES (?, ?);',
+            [dni,nombre],(err,rows) => {
                 if(err) {
                     res.status (400).send(err.message);
                 }else{
                     res.status(201).json({id: rows.insertId});
                 }
             });
+
         }catch (err){
             res.status(500).send(err.message);
         }
     }
-
-
-    asociarEstudiante(req,res){
-        try{
-            const {curso_id,estudiante_id} = req.body;
-            db.query('INSERT INTO cursos_estudiantes (curso_id, estudiante_id) VALUES (?, ?);',
-            [curso_id,estudiante_id],(err,rows) => {
-                if(err) {
-                    res.status (400).send(err.message);
-                }else{
-                    res.status(201).json({respuesta: "Estudiante inscrito en el curso"});
-                }
-            });
-        }catch (err){
-            res.status(500).send(err.message);
-        }
-    }
-
-
 
     consultarDetalle(req,res){
         const {id} = req.params;
         try{
-            //const {dni,nombre,apellido,email,profesor,telefono} = req.body;
-            db.query('SELECT  * FROM cursos WHERE id=?',[id],(err,rows) => {
+
+            db.query('SELECT  * FROM estudiantes WHERE id=?',
+            [id],(err,rows) => {
                 if(err) {
                     res.status (400).send(err.message);
                 }
@@ -83,13 +74,14 @@ class CursosController{
         }catch (err){
             res.status(500).send(err.message);
         }
+
     }
 
     borrar(req,res){
-        //res.json ({msg:"Borrar estudiantes desde clase"});
         const {id} = req.params;
         try{
-            db.query('DELETE FROM cursos WHERE id=?;',
+            req.body;
+            db.query('DELETE FROM sistema_asistencia.estudiantes WHERE id=?;',
             [id],(err,rows) => {
                 if(err) {
                     res.status (400).send(err.message);
@@ -98,12 +90,9 @@ class CursosController{
                     res.status(200).json({respuesta:"Registro borrado correctamente"});
             });
         }catch (err){
-            //console.log(err);
             res.status(500).send(err.message);
         }
-
-    }
-
+   }
 }
 
-module.exports = new CursosController();
+module.exports = new EstudiantesController();

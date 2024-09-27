@@ -1,2 +1,5 @@
 node_modules
 conexion.js
+
+# Local Netlify folder
+.netlify
