@@ -47,7 +47,7 @@ class EstudiantesController{
             const {dni,nombre,apellidos,email} = req.body;
             //console.log ("el dni que llega es de " + dni);
 
-            db.query('INSERT INTO estudiantes (id, dni, nombre, apellidos, email) VALUES (NULL, ?, ?, ?, ?);',
+            db.query('INSERT INTO estudiantes () VALUES (NULL, ?, ?, ?, ?);',
             [dni,nombre,apellidos,email],(err,rows) => {
                 if(err) {
                     res.status (400).send(err.message);
