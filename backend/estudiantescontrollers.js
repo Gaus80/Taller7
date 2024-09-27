@@ -23,8 +23,8 @@ class EstudiantesController{
     actualizar(req,res){
         const {id} = req.params;
         try{
-            const {numerodedocumentodelestudiante,nombrescompletosdelestudiante} = req.body;
-            db.query('UPDATE cursos.estudiantes SET numerodedocumentodelestudiante=?, nombrescompletosdelestudiante=?, WHERE id=?;',
+            const {dni,nombre} = req.body;
+            db.query('UPDATE sistema_asistencia.estudiantes SET numerodedocumentodelestudiante=?, nombrescompletosdelestudiante=?, WHERE id=?;',
             [numerodedocumentodelestudiante,nombrescompletosdelestudiante],(err,rows) => {
                 if(err) {
                     res.status (400).send(err.message);
@@ -44,11 +44,11 @@ class EstudiantesController{
             console.log ("la información que llega es " + myJSON );
 
 
-            const {dni,nombre,apellidos,email} = req.body;
+            const {dni,nombre} = req.body;
             //console.log ("el dni que llega es de " + dni);
 
-            db.query('INSERT INTO estudiantes () VALUES (NULL, ?, ?, ?, ?);',
-            [dni,nombre,apellidos,email],(err,rows) => {
+            db.query('INSERT INTO estudiantes (numerodedocumentodelestudiante ,nombrescompletosdelestudiante) VALUES (?, ?);',
+            [dni,nombre],(err,rows) => {
                 if(err) {
                     res.status (400).send(err.message);
                 }else{
@@ -82,7 +82,7 @@ class EstudiantesController{
         const {id} = req.params;
         try{
             req.body;
-            db.query('DELETE FROM cursos.estudiantes WHERE id=?;',
+            db.query('DELETE FROM sistema_asistencia.estudiantes WHERE id=?;',
             [id],(err,rows) => {
                 if(err) {
                     res.status (400).send(err.message);
