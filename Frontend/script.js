@@ -3,23 +3,19 @@ function guardar(){
     let nota=0.0;
     let apellidos='';
 
-    let datoingresado = document.getElementById("correo").value;
-
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     event.preventDefault();
 
-    let raw = JSON.stringify({
+    let rawEstudiantes = JSON.stringify({
       "dni": document.getElementById("dni").value,
       "nombre": document.getElementById("nombre").value,
-      "apellidos": document.getElementById("apellidos").value,
-      "email": document.getElementById("correo").value
     });
 
     let requestOptions = {
       method: "POST",
       headers: myHeaders,
-      body: raw,
+      body: rawEstudiantes,
       redirect: "follow"
     };
 

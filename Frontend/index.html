@@ -15,7 +15,7 @@
             <label for="nombre">Nombre completo del Estudiante:</label><br>
             <input type="text" id="nombre" placeHolder=""><br><br>
             <!BOTON ACEPTAR EN ADICIONAR ESTUDIANTE-->
-            <input type="submit" onclick="guardar()" value="Aceptar"> 
+            <input type="submit" onclick="guardar()" id="btn-estudiantes" value="Enviar"> 
         </div>
     </form>
 </div>
@@ -28,7 +28,7 @@
         <label for="nombreCurso">Nombre del curso:</label><br>
         <input type="text" id="nombreCurso" placeholder=""><br><br>
         <!BOTON ACEPTAR EN ADICIONAR CURSO-->
-        <input type="submit" onclick="guardar()" value="Aceptar">   
+        <input type="submit" onclick="guardar()" id="btn-cursos" value="Enviar">   
     </form>
 </div>
 
@@ -37,14 +37,10 @@
     <form id="sesiones">
         <label for="idhi">Hora de Inicio:</label><br>
         <input type="text" id="idhi" placeHolder=""><br><br>
-        
-
         <label for="dnihf">Hora Final:</label><br>
-        <input type="text" id="dnihf" placeHolder=""> <br> <br>
- 
-       
+        <input type="text" id="dnihf" placeHolder=""> <br> <br>  
         <!BOTON ACEPTAR EN GENERAL-->
-        <input type="submit" onclick="guardar()" value="Aceptar">
+        <input type="submit" onclick="guardar()" id="btn-sesiones" value="Enviar">
     </form>
 </div>
 
