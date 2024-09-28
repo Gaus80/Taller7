@@ -1,8 +1,4 @@
 function guardar(){
-
-    let nota=0.0;
-    let apellidos='';
-
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     event.preventDefault();
@@ -19,7 +15,7 @@ function guardar(){
       redirect: "follow"
     };
 
-    fetch("http://localhost:6500/estudiantes/", requestOptions)
+    fetch("http://localhost:6500/estudiantes", requestOptions)
       .then((response) => response.text())
       .then((result) => console.log(result))
       .catch((error) => console.error(error));
@@ -78,7 +74,7 @@ function actualizar(){
       redirect: "follow"
     };
     let elid=document.getElementById("idA").value;
-    fetch("http://localhost:6500/estudiantes/"+elid, requestOptions)
+    fetch("http://localhost:8888/api/estudiantes/"+elid, requestOptions)
       .then((response) =>
             response.text())
       .then((result) =>
