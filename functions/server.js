@@ -12,7 +12,11 @@ app.get("/", (req, res) => {
     res.send("Hola mundo");
 });
 
+// Define las rutas antes de exportar el handler
 app.use("/estudiantes", estudiantesroutes);
+
+// Exporta el manejador para Netlify
+module.exports.handler = serverless(app);
 
 // Si no estás en el entorno de Netlify, escucha en el puerto 6500
 if (process.env.NETLIFY !== 'true') {
@@ -21,7 +25,3 @@ if (process.env.NETLIFY !== 'true') {
         console.log(`Servidor activo en el puerto ${port}`);
     });
 }
-
-// Exporta el manejador para Netlify
-app.use('/.netlify/functions/server', app);
-module.exports.handler = serverless(app);

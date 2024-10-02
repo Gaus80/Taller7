@@ -15,7 +15,7 @@ function guardar(){
       redirect: "follow"
     };
 
-    fetch("http://localhost:6500/estudiantes", requestOptions)
+    fetch("http://localhost:6500/estudiantes/", requestOptions)
       .then((response) => response.text())
       .then((result) => console.log(result))
       .catch((error) => console.error(error));
@@ -43,7 +43,7 @@ function listar(){
       method: "GET",
       redirect: "follow"
     };
-    fetch("http://localhost:6500/estudiantes/", requestOptions)
+    fetch("http://localhost:6500/estudian", requestOptions)
       .then((response) =>
         response.text())
       .then((result) =>
